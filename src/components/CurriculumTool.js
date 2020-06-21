@@ -17,7 +17,7 @@ import {
 import { curriculumReducer } from "../reducers/curriculum";
 import { tableDataReducer } from "../reducers/table-data";
 // static data
-import data from "../data.json";
+// import data from "../data.json";
 // import { data as flatData } from "../data-flat";
 
 function Node(value = "", parentId, level) {
