@@ -25,5 +25,7 @@ export const transformArrToTree = (d) => {
 };
 
 export const transformTreeToArr = ({ children, ...rest }) => {
+  // - ?. is optional chaining
+  // if children in an array then it should have flatMap method otherwise use empty array
   return [rest, ...(children?.flatMap(transformTreeToArr) ?? [])];
 };
