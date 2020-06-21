@@ -1,3 +1,5 @@
+# Sample JSON data is provided in the file (/src/sample-data-tree.json)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
