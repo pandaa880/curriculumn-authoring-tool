@@ -5,10 +5,66 @@
   align-items: center;
 }
 
+header {
+  min-width: 1000px;
+  max-width: 1280px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.import-export-btn__container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.import-export-btn__container input {
+  padding: 1rem;
+  font-size: 16px;
+}
+
+.btn--export {
+  padding: 0.5rem 1rem;
+  border-color: transparent;
+  border-radius: 3px;
+  outline: 0;
+  font-size: 14px;
+  background-color: teal;
+  color: #fff;
+  cursor: pointer;
+}
+
+.section-title {
+  width: 100%;
+  color: #c9c9c9;
+  text-transform: uppercase;
+}
+
+.table-form__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 table {
   border: 1px solid black;
   border-collapse: collapse;
   min-width: 1000px;
+  max-width: 1280px;
+}
+
+th {
+  padding: 1rem;
+  text-align: left;
+  vertical-align: baseline;
+}
+
+th span {
+  display: block;
+  color: #c9c9c9;
+  font-size: 14px;
 }
 
 tr {
@@ -20,35 +76,85 @@ td {
 }
 
 .action-btn-cell {
-  width: 300px;
+  width: 200px;
+}
+
+.value-cell {
+  padding: 0;
 }
 
 .action-btn {
   margin: 0 0.2rem;
-  padding: 0.5rem;
+  padding: 0.3rem;
   border: 1px solid transparent;
   outline: 0;
-  background-color: darkcyan;
+  /* background-color: darkcyan; */
+  background-color: transparent;
   color: #fff;
   cursor: pointer;
   font-size: 14px;
+}
+
+.action-btn--submit {
+  margin: 1rem 0.2rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  outline: 0;
+  min-width: 300px;
+  background-color: teal;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  align-self: center;
 }
 
 .action-btn:disabled {
   cursor: not-allowed;
 }
 
+.action-btn__icon {
+  fill: #c9c9c9;
+  pointer-events: none;
+}
+
+.action-btn:hover .action-btn__icon {
+  fill: #00ced1;
+}
+.action-btn:focus .action-btn__icon {
+  fill: #00ced1;
+}
+
+.action-btn__icon--rotate {
+  transform: rotate(180deg);
+}
+
 .input-container {
   display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
 .input {
   padding: 0.5rem;
-  border: 1px solid #c9c9c9;
+  padding-left: 2rem;
+  border: 2px solid transparent;
   width: 100%;
   font-size: 16px;
+  position: relative;
 }
 
 .input:focus {
-  border: 2px solid chocolate;
+  border: 2px solid #00ced1;
+}
+
+.input-container__block {
+  display: block;
+  width: 40px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.input:focus ~ .input-container__block {
+  background-color: #00ced1;
 }
