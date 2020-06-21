@@ -5,6 +5,7 @@ import {
   OUTDENT,
   UPDATE_ROW_VALUE,
   DELETE,
+  DROP,
 } from "../constants/actions";
 
 import {
@@ -119,6 +120,9 @@ export const tableDataReducer = (state, action) => {
         }
       }
 
+      if (!immediatePrevSibling) {
+        return arr;
+      }
       updatedArr = updateLevel(INDENT, arr, rowIndex);
       row.parentId = immediatePrevSibling.id;
       row.level = immediatePrevSibling.level + 1;
@@ -166,6 +170,40 @@ export const tableDataReducer = (state, action) => {
     const arr = transformTreeToArr(tree);
 
     return arr;
+  }
+
+  if (type === DROP) {
+    const arr = [...state];
+    // console.log(payload);
+    const { draggedItemIndex, dropTargetIndex } = payload;
+    const dragged = arr[draggedItemIndex];
+    const target = arr[dropTargetIndex];
+
+    if (dragged.id === target.parentId) {
+      return state;
+    }
+
+    dragged.parentId = target.id;
+
+    arr.splice(draggedItemIndex, 1, dragged);
+
+    const idMapping = getIdToIndexMapping(arr);
+    const withLevels = arr.map((item) => {
+      if (item.parentId === null) {
+        item.level = 0;
+      }
+      const parent = arr[idMapping[item.parentId]];
+
+      if (parent !== undefined) {
+        item.level = parent.level + 1;
+      }
+      return item;
+    });
+
+    const tree = transformArrToTree([...withLevels]);
+    const newArr = transformTreeToArr(tree);
+
+    return newArr;
   }
   return state;
 };
